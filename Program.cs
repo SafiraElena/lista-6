@@ -4,36 +4,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Exercício_1
+namespace Exercício_2
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Insira 10 valores inteiros:");
-            int[] A = new int[10];
-            int impar = 0;
-            int par = 0;
+            Console.WriteLine("Série de Fibonacci");
 
-            for (int i = 0; i <= 9; i++)
-            {
-                Console.WriteLine("Insira algum valor:");
-                A[i] = Convert.ToInt32((Console.ReadLine()));
-            }
+            Console.WriteLine("Digite o n−ésimo termo que você quer:");
+            int A = Convert.ToInt32(Console.ReadLine());
+            int[] bob = new int[A];
+            bob[0] = 1;
+            int ant = 0;
 
-            foreach (var x in A)
+            for (int i = 0; i <= (A - 1); i++)
             {
-                if(x % 2 == 0)
+                if (i != (A - 1))
                 {
-                    par++;
-                } else
-                {
-                    impar++;
+                    bob[i + 1] = bob[i] + ant;
                 }
+
+                ant = bob[i];
             }
 
-            Console.WriteLine("\n\nNúmeros impares: {0}", impar);
-            Console.WriteLine("Números pares: {0}", par);
+            Console.WriteLine("O n-ésimo termo é: {0}", bob[A - 1]);
 
             Console.ReadKey();
         }
